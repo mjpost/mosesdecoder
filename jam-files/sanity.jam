@@ -159,7 +159,7 @@ rule boost-lib ( name macro : deps * ) {
 
 #Argument is e.g. 103600
 rule boost ( min-version ) {
-  local cmd = "bash -c \"g++ "$(I-boost-include)" -dM -x c++ -E /dev/null -include boost/version.hpp 2>/dev/null |grep '#define BOOST_'\"" ;
+  local cmd = "bash -c \"g++ "$(I-boost-include)" -dM -x c++ -E /dev/null -include version.hpp 2>/dev/null |grep '#define BOOST_'\"" ;
   local boost-shell = [ SHELL "$(cmd)" : exit-status ] ;
   if $(boost-shell[2]) != 0 && $(CLEANING) = no {
     echo Failed to run "$(cmd)" ;
